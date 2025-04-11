@@ -3,9 +3,9 @@ import React from 'react';
 
 function PressRelease() {
   return (
-    <div className="container" style={{ paddingTop: '100px' }}>
+    <div style={{ padding: '100px 20px', textAlign: 'center' }}>
       <h2>PRESS RELEASE</h2>
-      <p>This is where the press releases will be displayed.</p>
+      <p>Official announcements, news, updates.</p>
     </div>
   );
 }

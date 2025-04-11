@@ -1,12 +1,15 @@
 /* src/App.css */
 
-/* 리셋 및 기본 스타일 */
+/* =====================================
+   (1) 리셋 및 글로벌 스타일
+===================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 html {
+  /* 부드러운 스크롤 이동 */
   scroll-behavior: smooth;
 }
 body {
@@ -15,66 +18,18 @@ body {
   color: #333;
 }
 
-/* Container */
+/* =====================================
+   (2) 컨테이너
+===================================== */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Header */
-header {
-  background: #fff;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-}
-.logo a {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  text-decoration: none;
-}
-.navigation ul {
-  list-style: none;
-  display: flex;
-}
-.navigation ul li {
-  margin-left: 1.5rem;
-}
-.navigation ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-.navigation ul li a:hover {
-  color: #007bff;
-}
-
-/* 모바일 메뉴 토글 */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.menu-toggle .bar {
-  height: 3px;
-  width: 25px;
-  background-color: #333;
-  margin: 4px 0;
-}
-
-/* 섹션 스타일 (Hero 섹션은 분리됨) */
+/* =====================================
+   (3) 섹션 기본 스타일 (Hero 제외)
+===================================== */
 section {
   padding: 80px 0;
 }
@@ -84,7 +39,9 @@ section h2 {
   font-size: 2.5rem;
 }
 
-/* Services 섹션 */
+/* =====================================
+   (4) Services 섹션
+===================================== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -114,7 +71,9 @@ section h2 {
   color: #666;
 }
 
-/* Portfolio 섹션 */
+/* =====================================
+   (5) Portfolio 섹션
+===================================== */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -160,7 +119,9 @@ section h2 {
   font-size: 1rem;
 }
 
-/* Contact 폼 */
+/* =====================================
+   (6) Contact 섹션
+===================================== */
 #contact form {
   max-width: 600px;
   margin: 0 auto;
@@ -201,7 +162,9 @@ section h2 {
   background: #0056b3;
 }
 
-/* Footer */
+/* =====================================
+   (7) Footer 섹션
+===================================== */
 footer {
   background: #333;
   color: #fff;
@@ -218,26 +181,9 @@ footer p {
   font-weight: 500;
 }
 
-/* Responsive Styles */
+/* =====================================
+   (8) Responsive (모바일)
+===================================== */
 @media (max-width: 768px) {
-  .navigation ul {
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 200px;
-    display: none;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .navigation ul.show {
-    display: flex;
-  }
-  .navigation ul li {
-    margin: 1rem 0;
-    text-align: center;
-  }
-  .menu-toggle {
-    display: flex;
-  }
+  /* 예: 모바일 메뉴 스타일 등, 필요시 추가 */
 }
