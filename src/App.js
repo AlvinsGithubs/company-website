@@ -1,175 +1,43 @@
 // src/App.js
-import React, { useState } from 'react';
+import React from 'react';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PressRelease from './pages/PressRelease';
+import Career from './pages/Career';
+import NsusLife from './pages/NsusLife';
 import './App.css';
-import HeroSection from './HeroSection';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <HeroSection />
-      <About />
-      <Services />
-      <Portfolio />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <MainNav />
+        
+        <Routes>
+          {/* 메인 화면 */}
+          <Route path="/" element={<HomePage />} />
+
+          {/* 새로 만든 페이지들 */}
+          <Route path="/press-release" element={<PressRelease />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/nsus-life" element={<NsusLife />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
-function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
-
+/** 상단 공통 네비게이션 (메뉴) */
+function MainNav() {
   return (
-    <header>
-      <div className="container header-container">
-        <div className="logo">
-          <a href="/">iGaming Hub</a>
-        </div>
-        <nav className="navigation">
-          <ul className={isOpen ? "show" : ""}>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <div className="menu-toggle" onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function About() {
-  return (
-    <section id="about">
-      <div className="container">
-        <h2>About Us</h2>
-        <p>
-          iGaming Hub is your premier destination for an all-encompassing iGaming experience.
-          Our platform offers diverse gaming services ranging from innovative casino games, competitive sports betting,
-          to authentic live dealer sessions. With cutting-edge technology and a modern design, we provide a seamless gaming experience.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function Services() {
-  return (
-    <section id="services">
-      <div className="container">
-        <h2>Our Services</h2>
-        <div className="services-grid">
-          <div className="service-card">
-            <img src={`${process.env.PUBLIC_URL}/images/casino.png`} alt="Casino Gaming" />
-            <h3>Casino Gaming</h3>
-            <p>
-              Enjoy a wide variety of casino games—from classic table games to modern slot machines—crafted for an immersive experience.
-            </p>
-          </div>
-          <div className="service-card">
-            <img src={`${process.env.PUBLIC_URL}/images/sportsbetting.png`} alt="Sports Betting" />
-            <h3>Sports Betting</h3>
-            <p>
-              Bet on your favorite sports events with ease, and access competitive odds on a user-friendly platform.
-            </p>
-          </div>
-          <div className="service-card">
-            <img src={`${process.env.PUBLIC_URL}/images/livedealer.png`} alt="Live Dealer" />
-            <h3>Live Dealer</h3>
-            <p>
-              Experience the thrill of real-time gaming with our live dealer sessions that bring authenticity to your screen.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Portfolio() {
-  return (
-    <section id="portfolio">
-      <div className="container">
-        <h2>Portfolio</h2>
-        <div className="portfolio-grid">
-          <div className="portfolio-item">
-            <img src={`${process.env.PUBLIC_URL}/images/portfolio1.png`} alt="Casino Platform" />
-            <div className="portfolio-overlay">
-              <h3>Casino Platform</h3>
-              <p>A comprehensive solution for online casino gaming.</p>
-            </div>
-          </div>
-          <div className="portfolio-item">
-            <img src={`${process.env.PUBLIC_URL}/images/portfolio2.png`} alt="Sports Betting Portal" />
-            <div className="portfolio-overlay">
-              <h3>Sports Betting Portal</h3>
-              <p>An innovative platform tailored for sports enthusiasts.</p>
-            </div>
-          </div>
-          <div className="portfolio-item">
-            <img src={`${process.env.PUBLIC_URL}/images/portfolio3.png`} alt="Live Dealer System" />
-            <div className="portfolio-overlay">
-              <h3>Live Dealer System</h3>
-              <p>Delivering an authentic live gaming experience.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Your message has been sent. We will contact you soon!');
-    e.target.reset();
-  };
-
-  return (
-    <section id="contact">
-      <div className="container">
-        <h2>Contact Us</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" placeholder="Your message" required></textarea>
-          </div>
-          <button type="submit" className="btn">Send</button>
-        </form>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer>
-      <div className="container">
-        <p>© 2025 iGaming Hub. All rights reserved.</p>
-        <div className="social-links">
-          <a href="#!">Facebook</a>
-          <a href="#!">Twitter</a>
-          <a href="#!">Instagram</a>
-        </div>
-      </div>
-    </footer>
+    <nav style={{ background: '#333', padding: '1rem' }}>
+      <ul style={{ listStyle: 'none', display: 'flex', gap: '1rem', margin: 0, justifyContent: 'center' }}>
+        <li><Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>HOME</Link></li>
+        <li><Link to="/press-release" style={{ color: '#fff', textDecoration: 'none' }}>PRESS RELEASE</Link></li>
+        <li><Link to="/career" style={{ color: '#fff', textDecoration: 'none' }}>CAREER</Link></li>
+        <li><Link to="/nsus-life" style={{ color: '#fff', textDecoration: 'none' }}>NSUS LIFE</Link></li>
+      </ul>
+    </nav>
   );
 }
 
